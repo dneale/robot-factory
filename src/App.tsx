@@ -1,22 +1,28 @@
 import * as React from 'react';
-import './App.css';
+import * as Router from 'react-router-dom';
+import { Container, Header } from 'semantic-ui-react';
+import styled from 'styled-components';
 
-import logo from './logo.svg';
+import LandingPage from './LandingPage';
 
+const Heading = styled.div`
+  margin: 2em;
+`
 class App extends React.Component {
   public render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <Heading>
+          <Container text={true}>
+            <Header as='h1'>Robot Factory - QA and Shipping</Header>
+          </Container>
+        </Heading>
+
+        <Router.Route exact={true} path="/" component={LandingPage} />
       </div>
     );
   }
 }
+
 
 export default App;
