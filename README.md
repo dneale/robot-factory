@@ -10,6 +10,11 @@ yarn install
 yarn start
 ```
 
+To run unit tests:
+```
+yarn test
+```
+
 ## Storybook
 This project makes use of storybook to maintain a component library. Run the following command to run locally:
 ```
