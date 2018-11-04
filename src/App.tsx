@@ -4,6 +4,7 @@ import { Container, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 import LandingPage from './Pages/LandingPage';
+import QAPage from './Pages/QAPage';
 
 const Heading = styled.div`
   margin: 2em;
@@ -19,6 +20,7 @@ class App extends React.Component {
         </Heading>
 
         <Router.Route exact={true} path="/" component={LandingPage} />
+        <Router.Route path="/qa" component={QAPage} />
       </div>
     );
   }
