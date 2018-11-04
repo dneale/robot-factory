@@ -111,12 +111,7 @@
       "json",
       "node",
       "mjs"
-    ],
-    "globals": {
-      "ts-jest": {
-        "tsConfigFile": "/Users/dmneale/personal/robot-factory/tsconfig.test.json"
-      }
-    }
+    ]
   },
   "babel": {
     "presets": [
