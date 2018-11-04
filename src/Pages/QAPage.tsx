@@ -1,11 +1,36 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import {Container} from 'semantic-ui-react';
 import ProcessStep from '../components/ProcessStep/ProcessStep';
+import { fetchRobots } from '../actions/qaActions';
 
-const QAPage = () => (
-  <Container text={true}>
-    <ProcessStep>Loading Robots for QA</ProcessStep>
-  </Container>
-);
+interface IQAPageInterface {
+  fetchRobots: () => any;
+}
 
-export default QAPage;
+export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
+  constructor(props: IQAPageInterface) {
+      super(props);
+  }
+
+  public componentDidMount() {
+    this.props.fetchRobots();
+  }
+
+  public render() {
+    return (
+      <Container text={true}>
+        <ProcessStep>Loading Robots for QA</ProcessStep>
+      </Container>
+    )
+  }
+}
+
+const mapDispatchToProps = {
+  fetchRobots
+}
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(QAPageComponent);
