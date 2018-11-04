@@ -3,7 +3,7 @@ import * as Router from 'react-router-dom';
 import { Container, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 
-import LandingPage from './LandingPage';
+import LandingPage from './Pages/LandingPage';
 
 const Heading = styled.div`
   margin: 2em;
