@@ -2,10 +2,11 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import {Container} from 'semantic-ui-react';
 import ProcessStep from '../components/ProcessStep/ProcessStep';
-import { fetchRobots } from '../actions/qaActions';
+import { fetchRobots } from '../actions/actions';
 
 interface IQAPageInterface {
   fetchRobots: () => any;
+  robots: any[];
 }
 
 export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
@@ -21,6 +22,9 @@ export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
     return (
       <Container text={true}>
         <ProcessStep>Loading Robots for QA</ProcessStep>
+        {this.props.robots &&
+          <ProcessStep>{this.props.robots.length} robots were loaded</ProcessStep>
+        }
       </Container>
     )
   }
@@ -30,7 +34,11 @@ const mapDispatchToProps = {
   fetchRobots
 }
 
+const mapStateToProps = (state: any) => ({
+  robots: state.robots.data
+})
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(QAPageComponent);
