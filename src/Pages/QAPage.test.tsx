@@ -18,11 +18,12 @@ describe('QAPage', () => {
   });
 
   it('should show how many robots were loaded', () => {
-    const component = enzyme.mount(
+    const component = enzyme.shallow(
       <MemoryRouter>
         <QAPageComponent fetchRobots={jest.fn()} robots={['robot', 'robot']}/>
       </MemoryRouter>
-    );
-    expect(component.find(<ProcessStep />).find({text: '2 robots were loaded'}).length).toBe(1);
+    ).dive().dive();
+
+    expect(component.find('ProcessStep').findWhere(x=>x.text() === '2 robots were loaded').length).toBe(1);
   });
 });

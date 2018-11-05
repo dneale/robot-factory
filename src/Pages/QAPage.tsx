@@ -23,7 +23,7 @@ export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
       <Container text={true}>
         <ProcessStep>Loading Robots for QA</ProcessStep>
         {this.props.robots &&
-          <ProcessStep>{this.props.robots.length} robots were loaded</ProcessStep>
+          <ProcessStep>{`${this.props.robots.length} robots were loaded`}</ProcessStep>
         }
       </Container>
     )

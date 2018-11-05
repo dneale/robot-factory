@@ -8,7 +8,7 @@ const robotsReducer = (state = initialState, action : any) => {
   if (action.type === actionTypes.FETCH_ROBOTS_FULFILLED) {
     return {
       ...state,
-      data: action.payload.data
+      data: action.payload
     };
   }
   return state;
