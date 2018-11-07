@@ -58,7 +58,7 @@
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "json-server": "json-server --watch mock/db.json --port 3001"
+    "json-server": "json-server --watch mock/db.json --routes mock/routes.json --delay 500 --port 3001"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

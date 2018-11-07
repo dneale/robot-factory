@@ -1,5 +1,28 @@
 {
   "robots": [
-    {"id": 1, "name": "Roy"}
+    {
+      "id": 1,
+      "name": "Roy",
+      "statuses": []
+    },
+    {
+      "id": 2,
+      "name": "Roy",
+      "statuses": [
+        "on fire"
+      ]
+    }
+  ],
+  "robots_extinguished": [
+    {
+      "id": 1,
+      "name": "Roy",
+      "statuses": []
+    },
+    {
+      "id": 2,
+      "name": "Roy",
+      "statuses": []
+    }
   ]
 }

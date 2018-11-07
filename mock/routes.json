@@ -1,0 +1,4 @@
+{
+  "/robots": "/robots",
+  "/robots/:id/extinguish.json": "/robots_extinguished/:id"
+}
