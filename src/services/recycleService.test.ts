@@ -56,7 +56,7 @@ describe('recycle service', () => {
           configuration: {
             ...testRobot.configuration,
             numberOfRotors: 1,
-            color: 'blue'
+            colour: 'blue'
           }
         });
         expect(isRobotFaulty(robot)).toBe(true);

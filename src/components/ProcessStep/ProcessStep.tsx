@@ -1,7 +1,8 @@
 import * as React from 'react';
+import {Segment} from 'semantic-ui-react';
 
 const ProcessStep = (props: any) => (
-  <p>{props.children}</p>
+  <Segment color='green'>{props.children}</Segment>
 );
 
 export default ProcessStep;

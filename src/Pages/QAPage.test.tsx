@@ -15,7 +15,7 @@ describe('QAPage', () => {
         hasWheels: true,
         hasTracks: true,
         numberOfRotors: 2,
-        color: 'white',
+        colour: 'white',
       },
       statuses,
     }
@@ -29,6 +29,7 @@ describe('QAPage', () => {
           fetchRobots={fetchRobots}
           robots={[]}
           extinguishedRobots={[]}
+          passedQA={[]}
           recycledRobots={[1,2,3]}
         />
       </MemoryRouter>);
@@ -44,6 +45,7 @@ describe('QAPage', () => {
           fetchRobots={fetchRobots}
           robots={[]}
           extinguishedRobots={[]}
+          passedQA={[]}
           recycledRobots={[1,2,3]}
         />
       </MemoryRouter>);
@@ -60,6 +62,7 @@ describe('QAPage', () => {
           extinguishRobot={jest.fn()}
           robots={['robot', 'robot']}
           extinguishedRobots={[]}
+          passedQA={[]}
           recycledRobots={[1,2,3]}
         />
       </MemoryRouter>
@@ -77,6 +80,7 @@ describe('QAPage', () => {
           extinguishRobot={jest.fn()}
           robots={['robot', 'robot']}
           extinguishedRobots={['robot', 'robot']}
+          passedQA={[]}
           recycledRobots={[1,2,3]}
         />
       </MemoryRouter>
@@ -94,6 +98,7 @@ describe('QAPage', () => {
           extinguishRobot={jest.fn()}
           robots={['robot', 'robot']}
           extinguishedRobots={['robot', 'robot']}
+          passedQA={[]}
           recycledRobots={[1,2,3]}
         />
       </MemoryRouter>
@@ -113,6 +118,7 @@ describe('QAPage', () => {
           extinguishRobot={extinguishRobot}
           robots={[getRobot(1, ['']), getRobot(2, ['on fire'])]}
           extinguishedRobots={[]}
+          passedQA={[]}
           recycledRobots={[1,2,3]}
         />
       );
@@ -139,6 +145,7 @@ describe('QAPage', () => {
           extinguishedRobots={[]}
           recycleService={recycleService}
           recycleRobots={recycleRobots}
+          passedQA={[]}
           recycledRobots={[1,2,3]}
           />);
 

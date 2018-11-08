@@ -40,11 +40,11 @@ describe('robotsReducer', () => {
 
       expect(robotsReducer(initialState, action)).toMatchObject(expectedState);
     });
-    it('should remove robots in data list', () => {
+    it('should put robots in passed QA list', () => {
       const action = { type: actionTypes.RECYCLE_ROBOTS_FULFILLED, payload:'', meta: [1] };
 
       const initialState = { data: [{id: 1}, {id: 2}], extinguished: [], recycled: [] };
-      const expectedState = { data: [{id: 2}], extinguished: [], recycled: [1]};
+      const expectedState = { data: [{id: 1}, {id: 2}], passedQA: [{id: 2}], extinguished: [], recycled: [1]};
 
       expect(robotsReducer(initialState, action)).toMatchObject(expectedState);
     });

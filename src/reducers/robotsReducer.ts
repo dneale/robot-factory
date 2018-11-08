@@ -3,12 +3,14 @@ import actionTypes from '../actions/actions';
 interface IState {
   data: any[];
   extinguished: any[];
-  recycled?: any[]
+  recycled?: any[];
+  passedQA?: any[]
 }
 const initialState = {
   data: [],
   extinguished: [],
-  recycled: []
+  recycled: [],
+  passedQA: [],
 };
 
 const robotsReducer = (state:IState = initialState, action : any) => {
@@ -36,7 +38,7 @@ const robotsReducer = (state:IState = initialState, action : any) => {
   if (action.type === actionTypes.RECYCLE_ROBOTS_FULFILLED) {
     return {
       ...state,
-      data: state.data.reduce((acc: any[], robot) => {
+      passedQA: state.data.reduce((acc: any[], robot) => {
         if (!action.meta.includes(robot.id)) {
           acc.push(robot);
         }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import {Container} from 'semantic-ui-react';
+import {Container, Header, List, Divider, Label} from 'semantic-ui-react';
 import ProcessStep from '../components/ProcessStep/ProcessStep';
 import { fetchRobots, extinguishRobot, recycleRobots } from '../actions/actions';
 import * as recycleService from '../services/recycleService';
@@ -13,6 +13,7 @@ interface IQAPageInterface {
   robots: any[];
   extinguishedRobots: any[];
   recycleService: any
+  passedQA: any[]
 }
 
 export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
@@ -50,6 +51,7 @@ export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
   public render() {
     return (
       <Container text={true}>
+        <Header>QA Steps</Header>
         <ProcessStep>Loading Robots for QA</ProcessStep>
         {this.props.robots.length > 0 &&
           <ProcessStep>{`${this.props.robots.length} robots were loaded`}</ProcessStep>
@@ -59,6 +61,19 @@ export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
         }
         {this.props.recycledRobots.length > 0 &&
           <ProcessStep>{`${this.props.recycledRobots.length} robots were recycled`}</ProcessStep>
+        }
+        <Divider />
+        {this.props.passedQA.length > 0 &&
+          <List>
+          <Header>Passed QA</Header>
+
+          {this.props.passedQA.map(robot => {
+            return (
+              <List.Item key={robot.id}>
+                <List.Content><Label>{robot.name}</Label></List.Content>
+              </List.Item>)
+          })}
+          </List>
         }
       </Container>
     )
@@ -74,7 +89,8 @@ const mapDispatchToProps = {
 const mapStateToProps = (state: any) => ({
   robots: state.robots.data,
   extinguishedRobots: state.robots.extinguished,
-  recycledRobots: state.robots.recycled
+  recycledRobots: state.robots.recycled,
+  passedQA: state.robots.passedQA
 })
 
 export default connect(
