@@ -2,16 +2,23 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import {Container} from 'semantic-ui-react';
 import ProcessStep from '../components/ProcessStep/ProcessStep';
-import { fetchRobots, extinguishRobot } from '../actions/actions';
+import { fetchRobots, extinguishRobot, recycleRobots } from '../actions/actions';
+import * as recycleService from '../services/recycleService';
 
 interface IQAPageInterface {
   fetchRobots: () => any;
   extinguishRobot: (id: number) => any;
+  recycleRobots: (ids: number[]) => any;
+  recycledRobots: number[];
   robots: any[];
   extinguishedRobots: any[];
+  recycleService: any
 }
 
 export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
+  public static defaultProps: Partial<IQAPageInterface> = {
+    recycleService
+  };
   constructor(props: IQAPageInterface) {
     super(props);
   }
@@ -26,10 +33,17 @@ export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
     })
   }
 
+  public recycleRobots() {
+    this.props.recycleRobots(this.props.recycleService.getFaultyRobots(this.props.robots));
+  }
+
   public componentDidMount() {
     this.props.fetchRobots()
       .then(() => {
-        this.extinguishRobots();
+        return this.extinguishRobots()
+      })
+      .then(() => {
+        this.recycleRobots();
       });
   }
 
@@ -43,6 +57,9 @@ export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
         {this.props.extinguishedRobots.length > 0 &&
           <ProcessStep>{`${this.props.extinguishedRobots.length} robots were extinguished`}</ProcessStep>
         }
+        {this.props.recycledRobots.length > 0 &&
+          <ProcessStep>{`${this.props.recycledRobots.length} robots were recycled`}</ProcessStep>
+        }
       </Container>
     )
   }
@@ -51,11 +68,13 @@ export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
 const mapDispatchToProps = {
   fetchRobots,
   extinguishRobot,
+  recycleRobots,
 }
 
 const mapStateToProps = (state: any) => ({
   robots: state.robots.data,
-  extinguishedRobots: state.robots.extinguished
+  extinguishedRobots: state.robots.extinguished,
+  recycledRobots: state.robots.recycled
 })
 
 export default connect(

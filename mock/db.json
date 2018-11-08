@@ -3,11 +3,25 @@
     {
       "id": 1,
       "name": "Roy",
+      "configuration": {
+        "hasSentience": true,
+        "hasWheels": true,
+        "hasTracks": false,
+        "numberOfRotors": 1,
+        "color": "green"
+      },
       "statuses": []
     },
     {
-      "id": 2,
+      "id": 1,
       "name": "Roy",
+      "configuration": {
+        "hasSentience": true,
+        "hasWheels": true,
+        "hasTracks": false,
+        "numberOfRotors": 1,
+        "color": "blue"
+      },
       "statuses": [
         "on fire"
       ]
@@ -17,12 +31,82 @@
     {
       "id": 1,
       "name": "Roy",
+      "configuration": {
+        "hasSentience": true,
+        "hasWheels": true,
+        "hasTracks": false,
+        "numberOfRotors": 1,
+        "color": "green"
+      },
       "statuses": []
     },
     {
-      "id": 2,
+      "id": 1,
       "name": "Roy",
+      "configuration": {
+        "hasSentience": true,
+        "hasWheels": true,
+        "hasTracks": false,
+        "numberOfRotors": 1,
+        "color": "green"
+      },
       "statuses": []
+    }
+  ],
+  "robots_recycle": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "id": 13
+    },
+    {
+      "id": 14
+    },
+    {
+      "id": 15
+    },
+    {
+      "id": 16
+    },
+    {
+      "id": 17
+    },
+    {
+      "id": 18
     }
   ]
 }

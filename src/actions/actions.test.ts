@@ -28,5 +28,26 @@ describe('actions', () => {
           payload: mockPromise
         })
     });
+  });
+  describe('recycleRobots', () => {
+    it('should call the recycle robot endpoint with the given robot ids', () => {
+        const mockPromise = new Promise((res)  => res());
+        const mockRequest = jest.fn().mockReturnValue(mockPromise);
+        const action = actions.recycleRobots([1, 2, 3], mockRequest);
+
+        expect(mockRequest).toHaveBeenCalledWith(
+          '/robots/recycle.json',
+          {
+            method: 'POST',
+            body: JSON.stringify([1,2,3])
+          }
+        );
+
+        expect(action).toEqual({
+          type: actionTypes.RECYCLE_ROBOTS,
+          payload: mockPromise,
+          meta: [1,2,3]
+        })
+    });
   })
 })

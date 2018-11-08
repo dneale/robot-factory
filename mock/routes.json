@@ -1,4 +1,5 @@
 {
   "/robots": "/robots",
-  "/robots/:id/extinguish.json": "/robots_extinguished/:id"
+  "/robots/:id/extinguish.json": "/robots_extinguished/:id",
+  "/robots/recycle.json": "/robots_recycle/"
 }

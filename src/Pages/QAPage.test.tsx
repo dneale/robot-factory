@@ -28,7 +28,8 @@ describe('QAPage', () => {
           extinguishRobot={jest.fn()}
           fetchRobots={fetchRobots}
           robots={[]}
-          extinguishedRobots={}
+          extinguishedRobots={[]}
+          recycledRobots={[1,2,3]}
         />
       </MemoryRouter>);
     expect(component.find('Container').exists()).toBe(true);
@@ -42,7 +43,8 @@ describe('QAPage', () => {
           extinguishRobot={jest.fn()}
           fetchRobots={fetchRobots}
           robots={[]}
-          extinguishedRobots={}
+          extinguishedRobots={[]}
+          recycledRobots={[1,2,3]}
         />
       </MemoryRouter>);
     component.render();
@@ -57,7 +59,8 @@ describe('QAPage', () => {
           fetchRobots={fetchRobots}
           extinguishRobot={jest.fn()}
           robots={['robot', 'robot']}
-          extinguishedRobots={}
+          extinguishedRobots={[]}
+          recycledRobots={[1,2,3]}
         />
       </MemoryRouter>
     ).dive().dive();
@@ -74,11 +77,29 @@ describe('QAPage', () => {
           extinguishRobot={jest.fn()}
           robots={['robot', 'robot']}
           extinguishedRobots={['robot', 'robot']}
+          recycledRobots={[1,2,3]}
         />
       </MemoryRouter>
     ).dive().dive();
 
     expect(component.find(ProcessStep).findWhere(x=>x.text() === '2 robots were extinguished').length).toBe(1);
+  });
+
+  it('should list how many robots were recycled', () => {
+    const fetchRobots = jest.fn().mockReturnValue(new Promise(res => res));
+    const component = enzyme.shallow(
+      <MemoryRouter>
+        <QAPageComponent
+          fetchRobots={fetchRobots}
+          extinguishRobot={jest.fn()}
+          robots={['robot', 'robot']}
+          extinguishedRobots={['robot', 'robot']}
+          recycledRobots={[1,2,3]}
+        />
+      </MemoryRouter>
+    ).dive().dive();
+
+    expect(component.find(ProcessStep).findWhere(x=>x.text() === '3 robots were recycled').length).toBe(1);
   });
 
   describe('extinguishRobots', () => {
@@ -91,15 +112,39 @@ describe('QAPage', () => {
           fetchRobots={fetchRobots}
           extinguishRobot={extinguishRobot}
           robots={[getRobot(1, ['']), getRobot(2, ['on fire'])]}
-          extinguishedRobots={}
-
+          extinguishedRobots={[]}
+          recycledRobots={[1,2,3]}
         />
       );
 
-    const instance = component.instance() as any;
-    instance.extinguishRobots();
-    expect(extinguishRobot).toHaveBeenCalledTimes(1)
-    expect(extinguishRobot).toHaveBeenCalledWith(2);
+      const instance = component.instance() as any;
+      instance.extinguishRobots();
+      expect(extinguishRobot).toHaveBeenCalledTimes(1)
+      expect(extinguishRobot).toHaveBeenCalledWith(2);
+    });
+  });
 
+  describe('recycleRobots', () => {
+    it('should recycle faulty robots', () => {
+      const fetchRobots = jest.fn().mockReturnValue(new Promise(res => res));
+      const recycleRobots = jest.fn();
+      const recycleService = {
+        getFaultyRobots: jest.fn().mockReturnValue([1, 2])
+      }
+      const component = enzyme.shallow(
+        <QAPageComponent
+          fetchRobots={fetchRobots}
+          extinguishRobot={jest.fn()}
+          robots={[getRobot(1, ['']), getRobot(2, ['on fire'])]}
+          extinguishedRobots={[]}
+          recycleService={recycleService}
+          recycleRobots={recycleRobots}
+          recycledRobots={[1,2,3]}
+          />);
+
+      const instance = component.instance() as any;
+      instance.recycleRobots();
+      expect(recycleRobots).toHaveBeenCalledWith([1, 2]);
+    });
   })
 });
