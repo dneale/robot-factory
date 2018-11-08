@@ -25,13 +25,14 @@ export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
   }
 
   public extinguishRobots() {
-    this.props.robots.map((robot) => {
+    return this.props.robots.reduce((acc: any[], robot) => {
       robot.statuses.map((status: string) => {
         if (status === 'on fire') {
-          this.props.extinguishRobot(robot.id);
+          acc.push(this.props.extinguishRobot(robot.id));
         }
       });
-    })
+      return acc;
+    }, []);
   }
 
   public recycleRobots() {
@@ -41,10 +42,10 @@ export class QAPageComponent extends React.Component<IQAPageInterface, {}> {
   public componentDidMount() {
     this.props.fetchRobots()
       .then(() => {
-        return this.extinguishRobots()
-      })
-      .then(() => {
-        this.recycleRobots();
+        Promise.all(this.extinguishRobots())
+        .then(() => {
+          this.recycleRobots();
+        })
       });
   }
 

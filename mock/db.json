@@ -19,7 +19,7 @@
         "hasSentience": true,
         "hasWheels": true,
         "hasTracks": false,
-        "numberOfRotors": 1,
+        "numberOfRotors": 6,
         "colour": "yellow"
       },
       "statuses": [
@@ -71,7 +71,7 @@
         "hasSentience": true,
         "hasWheels": true,
         "hasTracks": false,
-        "numberOfRotors": 1,
+        "numberOfRotors": 6,
         "colour": "green"
       },
       "statuses": []
@@ -92,6 +92,18 @@
     },
     {
       "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
     }
   ]
 }
