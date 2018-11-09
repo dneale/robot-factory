@@ -15,6 +15,9 @@ To run unit tests:
 yarn test
 ```
 
+## Mock Server
+JSON Server is used to mock the backend. It is automatically started and proxied as part of `yarn start`, but can be started standalone with `yarn run json-server`. To configure it, follow the documentation here: https://github.com/typicode/json-server
+
 ## Storybook
 This project makes use of storybook to maintain a component library. Run the following command to run locally:
 ```
@@ -29,18 +32,19 @@ https://circleci.com/gh/dneale/robot-factory/
 
 ## Trello Board
 
-A kanban board for the project can be found here:
+Project requirements were broken down into user stories. The kanban board for the project can be found here:
 
 https://trello.com/b/8x6GMCx6/robot-factory
 
-## Technologies / Techniques used
+## Other Technologies / Techniques used
 - React and Redux
 - Redux Promise used for REST API calls. This was chosen as it was familar and simple to implement. However include Thunk or transitioning to Saga would be helpful (see Future Work)
 - Semantic UI React components used for UI components. This expedited interface development well, since no custom designs needed to be followed.
 - Styled Components for CSS. This technology is a simple way to incorporate manage CSS alongside component code. It avoids the unmanageability of inline CSS and the separation of CSS files.
+- Jest is used for unit testing. Enzyme is used for testing the correct rendering of components.
 - Test Driven Development. In almost all cases, tests were written before code. For logic as well as component code.
 - No over engineering at first. Functionality was developed in a simple way, and then refactored as needed. For example, instead of guessing the composition of a component, a single component was made, and then it was broken down as it got too large.
-- Jest is used for unit testing. Enzyme is used for testing the correct rendering of components.
+
 
 ## Future Work
 A few notes for the reviewer of this code on the future work intended for this codebase, given more time:
